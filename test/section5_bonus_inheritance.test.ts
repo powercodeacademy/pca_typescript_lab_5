@@ -21,4 +21,35 @@ describe("Lab 5 — Section 5 (Bonus): Inheritance", () => {
     const dog = new context.Dog();
     expect(dog.speak()).to.equal("Woof!");
   });
+  it("should have a Dog class that extends Animal", () => {
+    const dog = new context.Dog();
+    expect(dog).to.be.an.instanceOf(context.Animal);
+  });
+
+  it("should have Animal's speak method return 'Some sound'", () => {
+    const animal = new context.Animal();
+    expect(animal.speak()).to.equal("Some sound");
+  });
+
+  it("should have Dog's speak method return 'Woof!'", () => {
+    const dog = new context.Dog();
+    expect(dog.speak()).to.equal("Woof!");
+  });
+
+  it("should maintain instance identity through inheritance", () => {
+    const dog = new context.Dog();
+    expect(dog instanceof context.Dog).to.be.true;
+    expect(dog instanceof context.Animal).to.be.true;
+  });
+
+  it("should allow casting Dog to Animal and maintain behavior", () => {
+    const dog = new context.Dog();
+    const animal: typeof context.Animal = dog;
+    expect(animal.speak()).to.equal("Woof!");
+  });
+
+  it("should have proper method overriding (not hiding)", () => {
+    const dogAsAnimal: typeof context.Animal = new context.Dog();
+    expect(dogAsAnimal.speak()).to.equal("Woof!");
+  });
 });
