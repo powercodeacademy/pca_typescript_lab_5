@@ -3,6 +3,7 @@ import * as ts from "typescript";
 import { readFileSync } from "fs";
 import { join } from "path";
 import vm from "vm";
+import * as type_annotation from "chai_typescript_type_annotation_tests";
 
 describe("Lab 5 — Section 4: Getters & Setters", () => {
   let context: any = {};
@@ -16,6 +17,20 @@ describe("Lab 5 — Section 4: Getters & Setters", () => {
     vm.createContext(context);
     vm.runInContext(jsCode, context);
   });
+
+  type_annotation.expectClassPropertyTypeAnnotation(
+    join(__dirname, "../src/section4_getters_setters.ts"),
+    "Rectangle",
+    "_width",
+    "number"
+  );
+
+  type_annotation.expectClassPropertyTypeAnnotation(
+    join(__dirname, "../src/section4_getters_setters.ts"),
+    "Rectangle",
+    "height",
+    "number"
+  );
 
   it("should return correct area and allow width updates", () => {
     const rect = new context.Rectangle(5, 10);
