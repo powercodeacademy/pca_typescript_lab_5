@@ -3,6 +3,7 @@ import * as ts from "typescript";
 import { readFileSync } from "fs";
 import { join } from "path";
 import vm from "vm";
+import * as type_annotation from "chai_typescript_type_annotation_tests";
 
 describe("Lab 5 — Section 1: Classes", () => {
   let context: any = {};
@@ -21,6 +22,27 @@ describe("Lab 5 — Section 1: Classes", () => {
     expect(person.age).to.equal(25);
     expect(person.greet()).to.include("Alice");
   });
+
+  type_annotation.expectClassPropertyTypeAnnotation(
+    filePath,
+    "Person",
+    "name",
+    "string"
+  );
+
+  type_annotation.expectClassPropertyTypeAnnotation(
+    filePath,
+    "Person",
+    "age",
+    "number"
+  );
+
+  type_annotation.expectClassMethodReturnTypeAnnotation(
+    filePath,
+    "Person",
+    "greet",
+    "string"
+  );
 
   it("should create a Person with different name and age values", () => {
     const person = new context.Person("Bob", 30);
