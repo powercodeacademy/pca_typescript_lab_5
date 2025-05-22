@@ -3,19 +3,53 @@ import * as ts from "typescript";
 import { readFileSync } from "fs";
 import { join } from "path";
 import vm from "vm";
+import * as type_annotation from "chai_typescript_type_annotation_tests";
 
 describe("Lab 5 — Section 3: Static Members", () => {
   let context: any = {};
+  const filePath = join(__dirname, "../src/section3_static_members.ts");
 
   before(() => {
-    const tsCode = readFileSync(
-      join(__dirname, "../src/section3_static_members.ts"),
-      "utf8"
-    );
+    const tsCode = readFileSync(filePath, "utf8");
     const jsCode = ts.transpile(tsCode);
     vm.createContext(context);
     vm.runInContext(jsCode, context);
   });
+
+  type_annotation.expectClassPropertyTypeAnnotation(
+    filePath,
+    "Counter",
+    "count",
+    "number"
+  );
+
+  type_annotation.matchClassMethodParameterTypeAnnotation(
+    filePath,
+    "Counter",
+    "increment",
+    []
+  );
+
+  type_annotation.matchClassMethodParameterTypeAnnotation(
+    filePath,
+    "Counter",
+    "getCount",
+    []
+  );
+
+  type_annotation.expectClassMethodReturnTypeAnnotation(
+    filePath,
+    "Counter",
+    "increment",
+    "void"
+  );
+
+  type_annotation.expectClassMethodReturnTypeAnnotation(
+    filePath,
+    "Counter",
+    "getCount",
+    "number"
+  );
 
   it("should increment static count and return it", () => {
     context.Counter.count = 0;
