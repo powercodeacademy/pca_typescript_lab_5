@@ -3,6 +3,7 @@ import * as ts from "typescript";
 import { readFileSync } from "fs";
 import { join } from "path";
 import vm from "vm";
+import * as type_annotation from "chai_typescript_type_annotation_tests";
 
 describe("Lab 5 — Section 5 (Bonus): Inheritance", () => {
   let context: any = {};
@@ -16,6 +17,20 @@ describe("Lab 5 — Section 5 (Bonus): Inheritance", () => {
     vm.createContext(context);
     vm.runInContext(jsCode, context);
   });
+
+  type_annotation.expectClassMethodReturnTypeAnnotation(
+    join(__dirname, "../src/section5_bonus_inheritance.ts"),
+    "Animal",
+    "speak",
+    "string"
+  );
+
+  type_annotation.expectClassMethodReturnTypeAnnotation(
+    join(__dirname, "../src/section5_bonus_inheritance.ts"),
+    "Dog",
+    "speak",
+    "string"
+  );
 
   it("should allow Dog to override Animal's speak method", () => {
     const dog = new context.Dog();
