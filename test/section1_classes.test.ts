@@ -44,6 +44,13 @@ describe("Lab 5 — Section 1: Classes", () => {
     "string"
   );
 
+  type_annotation.matchClassMethodParameterTypeAnnotation(
+    filePath,
+    "Person",
+    "greet",
+    []
+  );
+
   it("should create a Person with different name and age values", () => {
     const person = new context.Person("Bob", 30);
     expect(person.name).to.equal("Bob");
