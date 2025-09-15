@@ -1,7 +1,13 @@
-// TASK:
-// Create a class `Person` with:
-// - `name`: string
-// - `age`: number
-// Add a method `greet()` that returns "Hi, I'm <name>"
+class Person {
+  name: string;
+  age: number;
 
-// Your code here 👇
+  greet(): string {
+    return `Hi, I'm ${this.name}`;
+  };
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  };
+};

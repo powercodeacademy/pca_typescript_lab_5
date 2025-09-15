@@ -1,5 +1,11 @@
-// BONUS TASK:
-// Create a class `Animal` with a method `speak()` that returns "Some sound"
-// Create a class `Dog` that extends `Animal` and overrides `speak()` to return "Woof!"
+class Animal {
+  speak(): string {
+    return "Some sound"
+  }
+}
 
-// Your code here 👇
+class Dog extends Animal {
+  speak(): string {
+    return "Woof!"
+  }
+}
