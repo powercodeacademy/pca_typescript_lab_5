@@ -7,9 +7,7 @@
 // Your code here 👇
 
 class Counter {
-  static count: number
-
-  constructor(count: number) {}
+  static count: number = 0
 
   static increment(): void {
     Counter.count += 1
