@@ -18,14 +18,14 @@ By the end of this lab, you'll be comfortable with:
 
 ## Getting Started
 
-First, fork and clone the repository and let's set up your environment:
+First, clone this repository to your local machine and install the required dependencies:
 
 ```bash
 npm install
 npm test
 ```
 
-The tests will guide you through each concept. Don't worry if they fail initially—that's how you'll learn what TypeScript expects!
+You should see test output showing which tests are passing and failing. Don't worry if tests are failing initially - that's expected! You'll be implementing the code to make them pass.
 
 ---
 
@@ -72,7 +72,20 @@ console.log(bob.greet()) // "Hi, I'm Bob"
 
 The `constructor` is a special method that runs when you create a new instance of the class. It's where you set up the initial values for your object's properties. The `this` keyword refers to the current instance of the class.
 
-**Try it yourself:** Open `src/section1_classes.ts` and create a `Person` class with `name` and `age` properties, plus a `greet()` method that returns a greeting string.
+### Practice: Basic Classes
+
+**Your Task**: Open `src/section1_classes.ts` and complete the following:
+
+1. Create a `Person` class with:
+
+   - `name`: string property
+   - `age`: number property
+   - `constructor(name: string, age: number)` that sets both properties
+   - `greet()`: method that returns a greeting string
+
+2. Create an instance of the `Person` class
+
+**Hint**: Use the `class` keyword, define properties, create a constructor, and add methods. Use `this` to refer to the current instance.
 
 ---
 
@@ -123,7 +136,21 @@ console.log(account.getBalance()) // 1500 - public method
 
 Private properties are perfect for internal state that shouldn't be modified directly from outside the class. Readonly properties are great for values that should never change after the object is created, like IDs or timestamps.
 
-**Your turn:** In `src/section2_access_modifiers.ts`, create an `Account` class with a public `owner`, private `balance`, and readonly `id`, plus a `deposit()` method that increases the balance.
+### Practice: Access Modifiers
+
+**Your Task**: Open `src/section2_access_modifiers.ts` and complete the following:
+
+1. Create an `Account` class with:
+
+   - `owner`: public string property
+   - `balance`: private number property
+   - `id`: readonly number property
+   - `constructor(owner: string, id: number, initialBalance: number)` that sets all properties
+   - `deposit(amount: number)`: method that increases the balance (only if amount > 0)
+
+2. Create an instance of the `Account` class
+
+**Hint**: Use `public`, `private`, and `readonly` keywords to control access. Private properties can only be accessed from within the class.
 
 ---
 
@@ -170,7 +197,19 @@ Static members are perfect for:
 - Utility methods that don't need instance data
 - Constants that are related to the class
 
-**Challenge:** In `src/section3_static_members.ts`, create a `Counter` class with a static `count` property, a static `increment()` method, and an instance `getCount()` method.
+### Practice: Static Members
+
+**Your Task**: Open `src/section3_static_members.ts` and complete the following:
+
+1. Create a `Counter` class with:
+
+   - `static count`: number property (shared across all instances)
+   - `static increment()`: method that increases the static count
+   - `getCount()`: instance method that returns the current static count
+
+2. Test the static functionality
+
+**Hint**: Use the `static` keyword for class-level members. Access static properties with `ClassName.propertyName`.
 
 ---
 
@@ -226,7 +265,22 @@ Getters and setters are perfect for:
 - Logging or debugging when properties are accessed
 - Lazy loading of expensive calculations
 
-**Your turn:** In `src/section4_getters_setters.ts`, create a `Rectangle` class with `width` and `height` properties, an `area` getter, and a `width` setter that only accepts positive numbers.
+### Practice: Getters and Setters
+
+**Your Task**: Open `src/section4_getters_setters.ts` and complete the following:
+
+1. Create a `Rectangle` class with:
+
+   - `_width`: private number property
+   - `_height`: private number property
+   - `constructor(width: number, height: number)` that sets both properties
+   - `get area()`: getter that returns width × height
+   - `get width()`: getter that returns the width
+   - `set width(value: number)`: setter that only accepts positive numbers
+
+2. Test the getter and setter functionality
+
+**Hint**: Use `get` and `set` keywords. Getters and setters look like properties but are actually methods.
 
 ---
 
@@ -276,7 +330,25 @@ Inheritance is perfect for:
 - Building complex object hierarchies
 - Following the DRY (Don't Repeat Yourself) principle
 
-**Bonus challenge:** In `src/section5_bonus_inheritance.ts`, create an `Animal` class with a `speak()` method, then create a `Dog` class that extends `Animal` and overrides `speak()` to return "Woof!".
+### Practice: Inheritance and Method Overriding (Bonus Challenge)
+
+**Your Task**: Open `src/section5_bonus_inheritance.ts` and complete the following:
+
+1. Create an `Animal` class with:
+
+   - `name`: string property
+   - `constructor(name: string)` that sets the name
+   - `speak()`: method that returns "Some sound"
+
+2. Create a `Dog` class that:
+
+   - Extends `Animal`
+   - Overrides `speak()` to return "Woof!"
+   - Adds a `wagTail()` method that returns a string about wagging
+
+3. Test both classes
+
+**Hint**: Use the `extends` keyword to inherit from a parent class. Override methods by defining them again in the child class.
 
 ---
 
@@ -294,10 +366,6 @@ Classes, access modifiers, static members, getters, setters, and inheritance are
 These concepts are especially important when building applications with complex data models, user interfaces, or any system where you need to manage state and behavior in an organized way.
 
 ---
-
-## Ready to Start?
-
-Open `src/section1_classes.ts` and begin! The tests will guide you through each concept. Remember: TypeScript's class system is here to help you write better, more organized code. Embrace the structure—it's your friend! 🚀
 
 ### Common Troubleshooting
 
