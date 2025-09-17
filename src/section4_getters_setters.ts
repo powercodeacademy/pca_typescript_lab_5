@@ -8,7 +8,7 @@
 // Your code here 👇
 
 class Rectangle {
-  public _width: number
+  private _width: number
   private height: number
 
   constructor(width: number, height: number) {
